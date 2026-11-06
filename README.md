@@ -2,7 +2,12 @@
 
 *Updated Nov 2026*
 
-These are the tools I use and recommend for building apps and running product work: project management, product management and productivity. I made this list because people kept asking what I use, and a long list of logos doesn't help you pick. So it starts with what you're trying to do, then gives you a few stacks that work together, a real build of mine, and the full list with when to skip each tool.
+These are the tools I use and recommend for building apps and running product work: project management, product management and productivity. I made this list because people kept asking what I use, and a long list of logos doesn't help you pick. So it goes in this order:
+
+1. What you're trying to do
+2. A few stacks that work together
+3. A real build of mine
+4. The full list, with when to skip each tool
 
 Every tool has a level:
 
@@ -91,21 +96,50 @@ Every tool here has a free plan or free tier as of Nov 2026.
 | Figma | Design and prototypes everyone can comment on | Intermediate |
 | PostHog | One place for analytics, replays and feature flags | Intermediate |
 
-## A real walkthrough: an iPhone app prototype in one evening
+## How I built my budget app in one night
 
 **Can I afford this?** is a budget app prototype I built for iPhone in one evening. I tried the budgeting apps everyone recommends, and none of them fit how I actually spend, so I made my own and filmed it for a short video. You ask it before you buy something, and it checks your bank balance and the bills coming up. Everything in it is made-up demo data, and the smart parts are simulated for now. It's not financial advice.
 
-**Tools in this build:** Claude Cowork for the plan and the mocks, Claude Code for the build, Expo and Expo Go to run it on my iPhone, and Apple's SF Symbols for icons.
+**Tools in this build:**
+
+- Claude Cowork for the plan and the mocks
+- Claude Code for the build
+- Expo and Expo Go to run it on my iPhone
+- Apple's SF Symbols for icons
 
 **How I usually build:** I brainstorm in Claude Cowork, do the design specs in Claude Design, then build in Claude Code. Depending on the build, I'll skip a step. For this one, Cowork handled both the plan and the mocks.
 
 ### Part 1: the plan, in Cowork
 
-1. **I started with what the video had to show.** Four moments: Can I afford this?, sinking funds (money split into pots that carry over), what's due on each card, and a monthly check-in. Everything else is built around those four.
+1. **I started with what the video had to show.** Four moments:
 
-2. **I wrote the spec with Claude in Cowork.** It's a `CLAUDE.md` file that Claude Code reads every time it starts, so I never re-explain the app. It covers the scope, the stack, every screen, the colours and type, the copy rules, the answer logic and the build order. It more than doubled in size over a few rewrites before any code got written.
+   - Can I afford this?
+   - sinking funds (money split into pots that carry over)
+   - what's due on each card
+   - a monthly check-in
 
-3. **I designed the screens in the same place.** Nine phone frames in one `mocks.html` file, over seven rounds. I wanted it soft and calm, not like a bank app: cream, white cards, black text and a honey accent, with Apple's text styles, fonts I already use and my own spacing system. My rule for Claude: the mocks win for looks and the spec wins for logic.
+   Everything else is built around those four.
+
+2. **I wrote the spec with Claude in Cowork.** It's a `CLAUDE.md` file that Claude Code reads every time it starts, so I never re-explain the app. It covers:
+
+   - the scope
+   - the stack
+   - every screen
+   - the colours and type
+   - the copy rules
+   - the answer logic
+   - the build order
+
+   It more than doubled in size over a few rewrites before any code got written.
+
+3. **I designed the screens in the same place.** Nine phone frames in one `mocks.html` file, over seven rounds. I wanted it soft and calm, not like a bank app:
+
+   - cream, white cards, black text and a honey accent
+   - Apple's text styles
+   - fonts I already use
+   - my own spacing system
+
+   My rule for Claude: the mocks win for looks and the spec wins for logic.
 
 4. **I switched from a web app to a real iPhone app.** The first spec was a phone-first web app with Next.js and real Claude API calls. Right before building, I changed it to a native iPhone app with Expo, React Native and TypeScript, because I wanted more practice building iPhone apps and I'm planning to connect real banks later. Running it in Expo Go meant no Apple developer account, and it gave me the real iOS details: Liquid Glass, native sheets, SF Symbols and haptics.
 
@@ -113,17 +147,41 @@ Every tool here has a free plan or free tier as of Nov 2026.
 
 ### Part 2: the build, in Claude Code
 
-6. **One session, eight steps.** Foundations, Home and Can I afford this?, Funds, Cards, Check-in and Settings, the simulated smart features, product link reading, and a polish pass for filming. About five and a half hours start to finish.
+6. **One session, eight steps.**
 
-7. **I checked every step on my phone.** `npx expo start` on the Mac shows a QR code, I scan it with my iPhone, and the app opens in Expo Go with edits reloading live. After each step I gave feedback out loud before moving on. Marking a card as paid now slides to the next card with a green tick, sales tax got its own page, and Net became "More in than out" after two wordings I didn't like.
+   1. Foundations
+   2. Home and Can I afford this?
+   3. Funds
+   4. Cards
+   5. Check-in and Settings
+   6. The simulated smart features
+   7. Product link reading
+   8. A polish pass for filming
 
-8. **Polish took the longest.** About two hours of reviewing on my phone. The hardest bug was a white flash on sheets that only happened on my iPhone, never in the simulator. It turned out iOS 26 lights up Liquid Glass when you touch a short sheet, so I let the glass show with a cream tint instead of fighting it.
+   About five and a half hours start to finish.
 
-**Where it's at now:** all eight steps are done, and every screen works: Home, Can I afford this?, Funds, Cards, Check-in and Settings. Reading screenshots, links and statements, plus the written check-in summary, are simulated in this version. Next, I'm rolling it out on TestFlight to a small group of testers before it goes to the App Store.
+7. **I checked every step on my phone.** `npx expo start` on the Mac shows a QR code, I scan it with my iPhone, and the app opens in Expo Go with edits reloading live. After each step I gave feedback out loud before moving on. Some of what changed:
+
+   - Marking a card as paid now slides to the next card with a green tick.
+   - Sales tax got its own page.
+   - Net became "More in than out" after two wordings I didn't like.
+
+8. **Polish took the longest.** About two hours of reviewing on my phone. The hardest bug was a white flash on sheets that only happened on my iPhone, never in the simulator. It turned out iOS 26 lights up Liquid Glass when you touch a short sheet, so I let the glass show with a cream tint.
+
+**Where it's at now:** all eight steps are done, and every screen works:
+
+- Home
+- Can I afford this?
+- Funds
+- Cards
+- Check-in
+- Settings
+
+Reading screenshots, links and statements, plus the written check-in summary, are simulated in this version. Next, I'm rolling it out on TestFlight to a small group of testers before it goes to the App Store.
 
 ### Part 3: fast follows
 
-The prototype gets you most of the way there. If you're building your own, here's how to take it the rest of the way.
+If you're building your own, here's how to take the prototype the rest of the way.
 
 #### Smart features with the Claude API
 
@@ -144,7 +202,7 @@ The prototype gets you most of the way there. If you're building your own, here'
 
 ⚠️ **This is money data.** Read your provider's security requirements before you invite testers to connect their accounts.
 
-💡 **Write the plan before you open Claude Code.** The more the file says, the less you fix later.
+💡 **Write the plan before you open Claude Code.** Put as much detail in it as you can, so there's less to fix later.
 
 💡 **Test on your real phone, not just the simulator.** The two bugs that took the longest only showed up on my iPhone.
 
