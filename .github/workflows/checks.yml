@@ -1,0 +1,15 @@
+# Runs my shared repo checks on every pull request and on main.
+# The checks live in Lily-Tewolde/.github, so a fix there reaches every repo.
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  repo-checks:
+    uses: Lily-Tewolde/.github/.github/workflows/repo-checks.yml@main
